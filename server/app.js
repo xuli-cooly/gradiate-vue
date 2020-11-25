@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var session = require('express-session') 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -19,7 +19,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // 配置静态资源目录
 app.use(express.static(path.join(__dirname, 'public')));
-
+// 配置session
+app.use(session({
+  secret: 'keyboard cat', //服务端生成 session 的签名
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    secure: false, // https才能设置
+    maxAge: 1000*60 
+  },
+  rolling: true // 每次刷新重置cookie过期时间
+}))
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
