@@ -2,7 +2,7 @@
   <div class="login_container">
     <div class="login_box">
       <div class="login_avatar">
-        <img src="../../assets/login.jpeg" alt="">
+        <img src="../../assets/hehe.png" alt="">
       </div>
       <!-- 登录区域 -->
       <el-form ref="loginFormRef" class="login_form" :model="form" :rules=rules>
@@ -79,6 +79,7 @@ export default {
     left: 50%;
     transform: translate(-50%,-50%);
   }
+  
   .login_avatar{
     width: 130px;
     height: 130px;
@@ -96,14 +97,23 @@ export default {
       border-radius: 50%;
       background-color: #eee;
     }
+    img:hover {
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 600px;
+      height: 600px;
+      z-index: 9999;
+  }
   }
   .login_form {
-    position: absolute;
-    bottom: 0px;
+    position: relative;
+    top: 100px;
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
-
+    z-index: 1;
   }
   .btns {
     display: flex;
